@@ -7,6 +7,8 @@ import com.Aj.Spring.Service.Student_Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class Student_Service_impllement implements Student_Service {
     @Autowired
@@ -25,4 +27,11 @@ public class Student_Service_impllement implements Student_Service {
         Student isExits=studentRepo.findById(id).orElseThrow(() ->new ResourceNotFoundException("Student Not Found","ID",id));
         studentRepo.delete(isExits);
     }
+
+    @Override
+    public List<Student> getAllStudent() {
+        return studentRepo.findAll();
+    }
+
+
 }
