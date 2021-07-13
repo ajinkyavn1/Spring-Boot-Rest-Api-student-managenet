@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/student/")
 public class StudentApi {
@@ -21,5 +23,9 @@ public class StudentApi {
     ResponseEntity<String> DeleteStudent(@PathVariable long id){
         studentService.DeleteStudent(id);
         return new ResponseEntity<String>("Deleted Sucessfully",HttpStatus.OK);
+    }
+    @GetMapping("/getAllStudent")
+        List<Student> getAllStudents(){
+        return studentService.getAllStudent();
     }
 }
